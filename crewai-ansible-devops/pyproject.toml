@@ -1,0 +1,24 @@
+[project]
+name = "ansible_devops_crew"
+version = "0.1.0"
+description = "ansible-devops-crew using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.10.1"
+]
+
+[project.scripts]
+ansible_devops_crew = "ansible_devops_crew.main:run"
+run_crew = "ansible_devops_crew.main:run"
+train = "ansible_devops_crew.main:train"
+replay = "ansible_devops_crew.main:replay"
+test = "ansible_devops_crew.main:test"
+run_with_trigger = "ansible_devops_crew.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

@@ -1,0 +1,21 @@
+analysis_task:
+  description: >
+    Installation of docker engine on a Ubuntu 22.04 LTS server and starting the docker service.
+    IP of the Ubuntu server is 13.232.247.249
+  expected_output: >
+    A list of proper steps to achieve the given task
+  agent: team_lead
+
+development_task:
+  description: >
+    Review the steps and build an ansible playbook to achieve the desired goal.
+  expected_output: >
+    A proper ansible playbook file in YAML format with proper syntax and no comments and no backticks.
+  agent: devops_engg
+
+ansible_run_task:
+   description: >
+     Run the ansible playbook file with the name playbook.yaml
+   expected_output: >
+     No expected output
+   agent: devops_engg
