@@ -1,0 +1,50 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Update system packages
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Install curl
+      apt:
+        name: curl
+        state: present
+
+    - name: Install unzip
+      apt:
+        name: unzip
+        state: present
+
+    - name: Download Terraform
+      get_url:
+        url: "https://releases.hashicorp.com/terraform/<VERSION>/terraform_<VERSION>_linux_amd64.zip"
+        dest: /tmp/terraform.zip
+
+    - name: Unzip Terraform
+      unarchive:
+        src: /tmp/terraform.zip
+        dest: /usr/local/bin/
+        remote_src: yes
+
+    - name: Move Terraform binary
+      command: mv /usr/local/bin/terraform /usr/local/bin/
+      args:
+        removes: /usr/local/bin/terraform
+
+    - name: Install Python3 and pip
+      apt:
+        name:
+          - python3
+          - python3-pip
+        state: present
+
+    - name: Install virtualenv (optional)
+      pip:
+        name: virtualenv
+        state: present
+
+    - name: Clean up Terraform zip
+      file:
+        path: /tmp/terraform.zip
+        state: absent

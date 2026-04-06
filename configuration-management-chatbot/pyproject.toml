@@ -1,0 +1,25 @@
+[project]
+name = "configuration_management_chatbot"
+version = "0.1.0"
+description = "configuration_management_chatbot using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.10.1",
+    "gradio>=6.11.0",
+]
+
+[project.scripts]
+configuration_management_chatbot = "configuration_management_chatbot.main:run"
+run_crew = "configuration_management_chatbot.main:run"
+train = "configuration_management_chatbot.main:train"
+replay = "configuration_management_chatbot.main:replay"
+test = "configuration_management_chatbot.main:test"
+run_with_trigger = "configuration_management_chatbot.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

@@ -1,0 +1,33 @@
+understand_user_req:
+  description: >
+    Take the user requirement/task and understand it.
+  expected_output: >
+    user requirement/task
+  agent: config_manager
+
+analysis_task:
+  description: >
+    Analyse the task/requirement, and build proper steps to achieve it.
+  expected_output: >
+    A list of proper steps to achieve the given task
+  agent: team_lead
+
+development_task:
+  description: >
+    Review the steps and build an ansible playbook to achieve the desired goal.
+  expected_output: >
+    A proper ansible playbook file in YAML format with proper syntax.
+
+    Keep a note of the following -
+    1. Use hosts: all & use become: true
+    2. Use get_url module to add official GPG Keys
+    3. There should be no comments and no backticks in the file
+    4. There should be no '---' symbol at the starting and ending of the file
+  agent: devops_engg
+
+ansible_run_task:
+   description: >
+     Run the ansible playbook file with the name playbook.yaml
+   expected_output: >
+     No expected output
+   agent: devops_engg
